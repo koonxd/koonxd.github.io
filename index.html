@@ -4,19 +4,18 @@
 
     
     
-    
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
 
 <script>
   const firebaseConfig = {
-    apiKey: "YOUR-KEY",
-    authDomain: "YOUR-PROJECT.firebaseapp.com",
-    databaseURL: "https://YOUR-PROJECT.firebaseio.com",
-    projectId: "YOUR-PROJECT",
-    storageBucket: "YOUR-PROJECT.appspot.com",
-    messagingSenderId: "YOUR-ID",
-    appId: "YOUR-APP-ID"
+    apiKey: "AIzaSyAcmOkUOFwdvnDt1OABTJ1jWFpK279uNws",
+    authDomain: "website-button-data.firebaseapp.com",
+    databaseURL: "https://website-button-data-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "website-button-data",
+    storageBucket: "website-button-data.firebasestorage.app",
+    messagingSenderId: "179977427437",
+    appId: "1:179977427437:web:33a6fcb113e81453782fe4"
   };
 
   const app = firebase.initializeApp(firebaseConfig);
@@ -52,6 +51,33 @@
     <title>✨hi✨</title>
   </head>
   <body>
+
+
+
+    
+    <h1>Global Counter</h1>
+<p id="count">Loading...</p>
+<button id="btn">Click me!</button>
+
+<script>
+  const countRef = db.ref("counter");
+
+  // Show the number live
+  countRef.on("value", (snapshot) => {
+    document.getElementById("count").innerText = snapshot.val();
+  });
+
+  // Increase number when button is clicked
+  document.getElementById("btn").onclick = () => {
+    countRef.transaction((current) => {
+      return (current || 0) + 1;
+    });
+  };
+</script>
+    
+
+
+    
     <h1>welcome to koon's little corner on the internet!</h1>
     <p>i mosly play florr.io, minecraft, roblox and some other random games</p>
     <p>mmmmmmmmm i like bread :3<p>
